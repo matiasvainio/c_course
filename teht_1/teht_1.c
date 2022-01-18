@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 // globaalit muuttujat
 char nimi[21], puskuri[21];
@@ -8,6 +9,7 @@ int ika;
 void kysyNimi() {
     printf(" Anna nimesi ");
     fgets(nimi, 21, stdin);
+    nimi[strcspn(nimi, "\n")] = 0;  // Poistetaan \n nimen lopusta.
 }
 void kysyIka() {
     printf(" Anna ikäsi ");
@@ -23,15 +25,15 @@ void tulostaIka() {
 
 void tulostaValikko() {
     char v;
-    printf("-----------------------Syöttö/Tulostus-testaus----------------------------------");
-    printf("\n\n\n\n");
-    printf("\t\t\t\tKysy nimi\t\t1");
-    printf("\n\t\t\t\tKysy ikä\t\t2");
-    printf("\n\t\t\t\tTulosta nimi\t\t3");
-    printf("\n\t\t\t\tTulosta ikä\t\t4");
-    printf("\n\t\t\t\tLopetus\t\t\t5");
-    printf("\n\n\n\t\t\t\tValitse: ");
     do {
+        printf("-----------------------Syöttö/Tulostus-testaus----------------------------------");
+        printf("\n\n\n\n");
+        printf("\t\t\t\tKysy nimi\t\t1");
+        printf("\n\t\t\t\tKysy ikä\t\t2");
+        printf("\n\t\t\t\tTulosta nimi\t\t3");
+        printf("\n\t\t\t\tTulosta ikä\t\t4");
+        printf("\n\t\t\t\tLopetus\t\t\t5");
+        printf("\n\n\n\t\t\t\tValitse: ");
         v = getchar();
         getchar();  // kulutetaan enterin painallus
         switch (v) {
