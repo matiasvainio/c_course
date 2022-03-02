@@ -30,7 +30,7 @@ Matkakortti alustus() {
 }
 
 int matkustus(Matkakortti* mk, double hinta) {
-    if (mk->getArvo() - hinta <= mk->getArvo()) {
+    if (mk->getArvo() - hinta >= 0) {
         mk->setArvo(mk->getArvo() - hinta);
         cout << "Arvoa jäljellä " << mk->getArvo() << endl;
     } else {
