@@ -12,9 +12,9 @@ const double SISAINEN = 2.5, SEUTU = 3.3;
 
 int main() {
     shared_ptr<Matkakortti> ptr;
-    cout << ptr << endl;
     tulostaValikko(ptr);
-    cout << ptr->getArvo() << endl;
+    // Ei pitäisi tulostaa mitään.
+    cout << "Arvo mainissa valikkofunktion jälkeen: " << *ptr->getArvo() << endl;
     return 0;
 }
 
@@ -115,5 +115,7 @@ void tulostaValikko(shared_ptr<Matkakortti> ptr) {
         }
 
     } while (v != '6');
+
+    cout << "Arvo valikkofunktion lopussa: " << *ptr->getArvo() << endl;
 
 }
