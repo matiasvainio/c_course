@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <string>
+#include <memory>
 
 #include "matkakortti.h"
 
@@ -10,11 +11,14 @@ using namespace std;
 const double SISAINEN = 2.5, SEUTU = 3.3;
 
 int main() {
-    tulostaValikko();
+    shared_ptr<Matkakortti> ptr;
+    cout << ptr << endl;
+    tulostaValikko(ptr);
+    cout << ptr->getArvo() << endl;
     return 0;
 }
 
-Matkakortti* alustus() {
+ shared_ptr<Matkakortti> alustus() {
     string nimi;
     double arvo;
     cout << "Nimi: ";
@@ -22,12 +26,15 @@ Matkakortti* alustus() {
     cout << "Arvo: ";
     cin >> arvo;
 
-    Matkakortti* mk = new Matkakortti(nimi, arvo);
+    shared_ptr<string> nimiPtr(new string(nimi));
+    shared_ptr<double> arvoPtr(new double(arvo));
+
+    shared_ptr<Matkakortti> mk(new Matkakortti(nimiPtr, arvoPtr));
 
     return mk;
 }
 
-int matkustus(Matkakortti* mk, double hinta) {
+int matkustus(shared_ptr<Matkakortti> mk, double hinta) {
     if (*mk->getArvo() - hinta >= 0) {
         mk->setArvo(*mk->getArvo() - hinta);
         cout << "Arvoa jäljellä " << *mk->getArvo() << endl;
@@ -38,7 +45,7 @@ int matkustus(Matkakortti* mk, double hinta) {
     return 0;
 }
 
-void lataus(Matkakortti* mk) {
+void lataus(shared_ptr<Matkakortti> mk) {
     double arvo;
     cout << "Arvon lataus:" << endl;
     cout << "Anna arvo: ";
@@ -49,13 +56,13 @@ void lataus(Matkakortti* mk) {
     cout << "Arvoa jäljellä: " << *mk->getArvo() << endl;
 }
 
-void tulostaTiedot(Matkakortti* mk) {
+void tulostaTiedot(shared_ptr<Matkakortti> mk) {
     cout << "Kortin tiedot." << endl;
     cout << "Nimi: " << *mk->getNimi() << endl;
     cout << "Arvo: " << *mk->getArvo() << endl;
 }
 
-int tarkistaKortinOlemeassaOlo(Matkakortti* ptr) {
+int tarkistaKortinOlemeassaOlo(shared_ptr<Matkakortti> ptr) {
     if (ptr != NULL) {
         return 1;
     } else {
@@ -64,8 +71,7 @@ int tarkistaKortinOlemeassaOlo(Matkakortti* ptr) {
     }
 }
 
-void tulostaValikko() {
-    Matkakortti* ptr;
+void tulostaValikko(shared_ptr<Matkakortti> ptr) {
     char v;
 
     do {
@@ -110,5 +116,4 @@ void tulostaValikko() {
 
     } while (v != '6');
 
-    delete ptr;
 }

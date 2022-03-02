@@ -3,10 +3,10 @@
 
 #include "matkakortti.h"
 
-Matkakortti* alustus();
-int matkustus(Matkakortti*, double);
-void lataus(Matkakortti*);
-void tulostaValikko();
-void tulostaTiedot(Matkakortti*);
+shared_ptr<Matkakortti> alustus();
+int matkustus(shared_ptr<Matkakortti>, double);
+void lataus(shared_ptr<Matkakortti>);
+void tulostaValikko(shared_ptr<Matkakortti>);
+void tulostaTiedot(shared_ptr<Matkakortti>);
 
 #endif

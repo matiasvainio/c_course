@@ -1,19 +1,27 @@
 #include "matkakortti.h"
 
 #include <iostream>
+#include <memory>
 #include <string>
 
-Matkakortti::Matkakortti(std::string _nimi, double _arvo) : nimi(new string(_nimi)), arvo(new double(_arvo)) {}
+using namespace std;
 
-Matkakortti::~Matkakortti() {
-    delete nimi, arvo;
+Matkakortti::Matkakortti(shared_ptr<string> _nimi, shared_ptr<double> _arvo) {
+    nimi = move(_nimi);
+    arvo = move(_arvo);
 }
 
-void Matkakortti::setNimi(std::string input) {
+Matkakortti::Matkakortti() {}
+
+// Matkakortti::~Matkakortti() {
+//     delete nimi, arvo;
+// }
+
+void Matkakortti::setNimi(string input) {
     *this->nimi = input;
 }
 
-string* Matkakortti::getNimi() {
+shared_ptr<string> Matkakortti::getNimi() {
     return this->nimi;
 }
 
@@ -21,6 +29,6 @@ void Matkakortti::setArvo(double input) {
     *this->arvo = input;
 }
 
-double* Matkakortti::getArvo() {
+shared_ptr<double> Matkakortti::getArvo() {
     return this->arvo;
 }

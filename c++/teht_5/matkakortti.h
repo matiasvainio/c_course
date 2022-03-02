@@ -1,23 +1,23 @@
 #ifndef MATKAKORTTI_H
 #define MATKAKORTTI_H
 #include <string>
+#include <memory>
 
 using namespace std;
 
 class Matkakortti {
    private:
-    string* nimi;
-    double* arvo;
+    shared_ptr<string> nimi;
+    shared_ptr<double> arvo;
 
    public:
     Matkakortti();
-    Matkakortti(string, double);
-    ~Matkakortti();
+    Matkakortti(shared_ptr<string>, shared_ptr<double>);
 
     void setNimi(string nimi);
     void setArvo(double arvo);
-    string* getNimi();
-    double* getArvo();
+    shared_ptr<string> getNimi();
+    shared_ptr<double> getArvo();
 };
 
 #endif
