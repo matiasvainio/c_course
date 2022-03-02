@@ -1,4 +1,4 @@
-#include "teht_4.h"
+#include "main.h"
 
 #include <iostream>
 #include <string>

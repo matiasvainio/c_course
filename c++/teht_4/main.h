@@ -1,9 +1,9 @@
-#ifndef TEHT_3_H
-#define TEHT_3_H
+#ifndef MAIN_H 
+#define MAIN_H 
 
 #include "matkakortti.h"
 
-Matkakortti alustus();
+Matkakortti* alustus();
 int matkustus(Matkakortti*, double);
 void lataus(Matkakortti*);
 void tulostaValikko();
