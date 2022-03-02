@@ -1,1 +1,0 @@
-![img](pics/teht1.png)
