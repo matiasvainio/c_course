@@ -110,5 +110,9 @@ void tulostaValikko() {
 
     } while (v != '6');
 
-    delete ptr;
+    delete(ptr);
+
+    cout << *ptr->getArvo() << endl;
+    cout << *ptr->getNimi() << endl;
+
 }
