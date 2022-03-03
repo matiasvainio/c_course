@@ -13,10 +13,6 @@ Matkakortti::Matkakortti(shared_ptr<string> _nimi, shared_ptr<double> _arvo) {
 
 Matkakortti::Matkakortti() {}
 
-// Matkakortti::~Matkakortti() {
-//     delete nimi, arvo;
-// }
-
 void Matkakortti::setNimi(string input) {
     *this->nimi = input;
 }
